@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Order: {{ order.orderID }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="bg-dark text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- This is a template from nunjucks
+                        Serverside rendering  as it's rendering out html data in a loop from information
+                     from the server, depending on the number of things found in the db/server-->
+                        <h1>Order: {{ order.orderID }}</h1>
+                        </div>
+                </div>
+            </div>
+        </header>
+        <main class="container mt-4">
+            <section id="order" class="mt-4"> 
+                {% if order %}
+                <h2>Order ID</h2>
+                {{ order.orderID }}
+                <h2>Customer ID</h2>
+                {{ order.customerID }}
+                <h2>Order Date</h2>
+                {{ order.orderDate }}
+                <h2>Customer Name</h2>
+                {{ order.customerName }}
+        
+                {% else %}
+                Could not find Order.
+                {% endif %}
+            </section>
+        </main>
+    </body>
+</html>

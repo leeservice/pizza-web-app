@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Orders</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="orders" class="mt-4">
+            <h2>Customer Orders</h2>
+            {% if orders and orders.length > 0 %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">OrderID</th>
+                            <th scope="col">CustomerID</th>
+                            <th scope="col">OrderDate</th>
+                            <th scope="col">Customer Name</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <!-- Each of these fields .orderID maps to the java Order object class -->
+                            <td>{{ order.orderID }}</td>
+                            <td>{{ order.customerID }}</td>
+                            <td>{{ order.orderDate }}</td>
+                            <td>{{ order.customerName }}</td>
+
+                            <td><a href= '/orders/{{ order.orderID }}'>View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                There are no orders.
+            {% endif %}
+        </section>
+    </main>
+    </head>
+</body>
+
+</html>
